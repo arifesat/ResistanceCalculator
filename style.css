@@ -1,0 +1,120 @@
+ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+    margin: 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+body {
+    background-color: rgb(82, 82, 82);
+}
+
+.resistor {
+    position: relative;
+    background-image: url("images/blankTransistor.png");
+    background-color: transparent;
+    background-repeat: no-repeat;
+    width: 783px;
+    height: 199px;
+    margin: auto;
+    margin-top: 10%;
+    zoom: 150%;
+}
+
+.resistor-body {
+    position: absolute;
+    width: 330px;
+    height: 122px;
+    top: 39px;
+    left: 233px;
+
+}
+
+.firstStripe {
+    position: absolute;
+    background-image: url("images/defaultStripe.png");
+    width: 38px;
+    height: 122px;
+    left: 5px;
+}
+
+.secondStripe {
+    position: absolute;
+    background-image: url("images/defaultStripe.png");
+    width: 38px;
+    height: 122px;
+    left: 65px;
+}
+
+.thirdStripe {
+    position: absolute;
+    background-image: url("images/defaultStripe.png");
+    width: 38px;
+    height: 122px;
+    left: 125px;
+}
+
+.fourthStripe {
+    position: absolute;
+    background-image: url("images/defaultStripe.png");
+    width: 38px;
+    height: 122px;
+    left: 185px;
+}
+
+.fifthStripe {
+    position: absolute;
+    background-image: url("images/defaultStripe.png");
+    width: 38px;
+    height: 122px;
+    left: 275px;
+}
+
+.colorPicker {
+    position: relative;
+    display: inline-block;
+    z-index: 1;
+    display: block;
+}
+
+.stripe:hover .colorPicker{
+    display: block;
+}
+
+.stripe:hover {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+
+}
+
+.selectionList {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: none;
+    width: 38px;
+    /* height: 113px; */
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    font-size: 10px;
+    top: 4px;
+
+}
+
+.firstStripe .selectionList {
+    top: 9px;
+}
+
+.fourthStripe .selectionList {
+    top: 10px;
+}
+
+.fifthStripe .selectionList {
+    top: 5px;
+}
+
+.stripe:hover .selectionList {
+    display: block;
+}
+
