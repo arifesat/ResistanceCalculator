@@ -33,7 +33,7 @@ body {
 
 .firstStripe {
     position: absolute;
-    background-image: url("images/defaultStripe.png");
+    background-image: url("images/blankStripe.png");
     width: 38px;
     height: 122px;
     left: 5px;
@@ -41,7 +41,7 @@ body {
 
 .secondStripe {
     position: absolute;
-    background-image: url("images/defaultStripe.png");
+    background-image: url("images/blankStripe.png");
     width: 38px;
     height: 122px;
     left: 65px;
@@ -49,7 +49,7 @@ body {
 
 .thirdStripe {
     position: absolute;
-    background-image: url("images/defaultStripe.png");
+    background-image: url("images/blankStripe.png");
     width: 38px;
     height: 122px;
     left: 125px;
@@ -57,7 +57,7 @@ body {
 
 .fourthStripe {
     position: absolute;
-    background-image: url("images/defaultStripe.png");
+    background-image: url("images/blankStripe.png");
     width: 38px;
     height: 122px;
     left: 185px;
@@ -65,7 +65,7 @@ body {
 
 .fifthStripe {
     position: absolute;
-    background-image: url("images/defaultStripe.png");
+    background-image: url("images/blankStripe.png");
     width: 38px;
     height: 122px;
     left: 275px;
