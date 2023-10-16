@@ -19,6 +19,11 @@ let stripe5 = null;
 let stripe4Tolerance = null;
 let stripe5Tolerance = null;
 
+let toleranceValue = null;
+let resistanceMax = null;
+let resistanceMin = null;
+let mainResistance = null;
+
 const selectionListItems = document.querySelectorAll('.colorPicker li');
 
 selectionListItems.forEach(item => {
@@ -66,25 +71,32 @@ function calculateResistance () {
     
     if (stripe5 === null) {
         baseResistance = parseInt(stripe1.toString() + stripe2.toString()) * Math.pow(10, stripe3);
-        let toleranceValue = stripe4Tolerance;
-        let resistanceMax = baseResistance + (baseResistance * toleranceValue);
-        let resistanceMin = baseResistance - (baseResistance * toleranceValue);
-        let mainResistance = baseResistance;
+        toleranceValue = stripe4Tolerance;
+        resistanceMax = baseResistance + (baseResistance * toleranceValue);
+        resistanceMin = baseResistance - (baseResistance * toleranceValue);
+        mainResistance = baseResistance;
         console.log(mainResistance);
         console.log(resistanceMin + '< ' + mainResistance + ' < ' + resistanceMax);
     }
 
     else {
         baseResistance = parseInt(stripe1.toString() + stripe2.toString() + stripe3.toString()) * Math.pow(10, stripe4);
-        let toleranceValue = stripe5Tolerance;
-        let resistanceMax = baseResistance + (baseResistance * toleranceValue);
-        let resistanceMin = baseResistance - (baseResistance * toleranceValue);
-        let mainResistance = baseResistance;
+        toleranceValue = stripe5Tolerance;
+        resistanceMax = baseResistance + (baseResistance * toleranceValue);
+        resistanceMin = baseResistance - (baseResistance * toleranceValue);
+        mainResistance = baseResistance;
         console.log(mainResistance);
         console.log(resistanceMin + '< ' + mainResistance + ' < ' + resistanceMax);
     }
 
-    
+    document.getElementById('resultText').innerHTML = mainResistance + ' Ω ± ' + (toleranceValue * 100) + '%';
+
+    let previousStripe1Value = stripe1;
+    let previousStripe2Value = stripe2;
+    let previousStripe3Value = stripe3;
+    let previousStripe4Value = stripe4;
+    let previousStripe5Value = stripe5;
+    let previousTolerance = toleranceValue;
 };
 
 document.getElementById('calculateButton').addEventListener('click', function() {
