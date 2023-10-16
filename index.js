@@ -19,7 +19,12 @@ const purpleTolerance = 1/1000;
 const greyTolerance = 5/10000;
 const goldTolerance = 5/100;
 const silverTolerance = 1/10;
-const blankTolerance = 1/5;
+
+let stripe1 = 0;
+let stripe2 = 0;
+let stripe3 = 0;
+let stripe4 = 0;
+let stripe5 = 0;
 
 const selectionListItems = document.querySelectorAll('.colorPicker li');
 
@@ -28,7 +33,39 @@ selectionListItems.forEach(item => {
         let lowerContent = item.textContent.toLowerCase()
         let stripeNumber = item.className;
         let newStripeURL = 'url("images/' + lowerContent + 'Stripe.png")'
-        console.log(newStripeURL);
         document.getElementById(stripeNumber).style.backgroundImage = (newStripeURL);
+        let resistanceValue = item.getAttribute('value')
+        // console.log(resistanceValue);
+        // console.log(stripeNumber);
+
+        switch(stripeNumber) {
+            case 'first':
+                stripe1 = resistanceValue;
+                break;
+                
+            case 'second':
+                stripe2 = resistanceValue;
+                break;
+            
+            case 'third':
+                stripe3 = resistanceValue;
+                break;
+
+            case 'fourth':
+                stripe4 = resistanceValue;
+                break;
+            
+            case 'fifth':
+                stripe5 = resistanceValue;
+                break;
+            
+            default:
+                break;
+            }
+            
     });
 });
+
+function calculateResistance () {
+    
+};
