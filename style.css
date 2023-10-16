@@ -24,7 +24,18 @@ body {
     border-radius: 12px;
 }
 
-#resultText {
+p {
+    color: white;
+    font-size: 40px;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+    width: 50%;
+    position: relative;
+    /* padding: 15px 30px; */
+}
+
+/* #resultText2 {
     color: white;
     font-size: 40px;
     margin: auto;
@@ -33,7 +44,7 @@ body {
     width: 50%;
     position: relative;
     padding: 15px 30px;
-}
+} */
 
 .button {
     margin: auto;
@@ -48,7 +59,7 @@ body {
     width: 783px;
     height: 199px;
     margin: auto;
-    margin-top: 10%;
+    margin-top: 5%;
     zoom: 150%;
 }
 

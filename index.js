@@ -4,10 +4,11 @@ const TOLERANCE_VALUES = {
     red: 2/100,
     green: 5/1000,
     blue: 25/10000,
-    violet: 1/1000,
-    gray: 5/10000,
+    purple: 1/1000,
+    grey: 5/10000,
     gold: 5/100,
     silver: 1/10,
+    blank: null
   };
 
 let stripe1 = null;
@@ -24,6 +25,13 @@ let resistanceMax = null;
 let resistanceMin = null;
 let mainResistance = null;
 
+let Stripe1Value = null;
+let Stripe2Value = null;
+let Stripe3Value = null;
+let Stripe4Value = null;
+let Stripe5Value = null;
+let toleranceLevel = null;
+
 const selectionListItems = document.querySelectorAll('.colorPicker li');
 
 selectionListItems.forEach(item => {
@@ -36,8 +44,8 @@ selectionListItems.forEach(item => {
         // console.log(resistanceValue);
         // console.log(stripeNumber);
 
-        stripe4Tolerance = TOLERANCE_VALUES[selectedColor]
-        stripe5Tolerance = TOLERANCE_VALUES[selectedColor]
+        
+
 
         switch(stripeNumber) {
             case 'first':
@@ -54,49 +62,64 @@ selectionListItems.forEach(item => {
 
             case 'fourth':
                 stripe4 = resistanceValue;
+                stripe4Tolerance = TOLERANCE_VALUES[selectedColor]
                 break;
             
             case 'fifth':
-                stripe5 = resistanceValue;
+                if (selectedColor === 'blank') {
+                    stripe5 = null;
+                    toleranceValue = stripe4Tolerance;
+                    // console.log(toleranceValue);
+                } else {
+                    stripe5 = resistanceValue;
+                    stripe5Tolerance = TOLERANCE_VALUES[selectedColor]
+                }
                 break;
             
             default:
                 break;
             }
+
+            // console.log('tolerance ' + stripe4Tolerance + ' ' + stripe5Tolerance);
               
     });
 });
 
 function calculateResistance () {
     
+    Stripe1Value = stripe1;
+    Stripe2Value = stripe2;
+    Stripe3Value = stripe3;
+    Stripe4Value = stripe4;
+    Stripe5Value = stripe5;
+
+
     if (stripe5 === null) {
-        baseResistance = parseInt(stripe1.toString() + stripe2.toString()) * Math.pow(10, stripe3);
+        baseResistance = parseInt(Stripe1Value.toString() + Stripe2Value.toString()) * Math.pow(10, Stripe3Value);
         toleranceValue = stripe4Tolerance;
-        resistanceMax = baseResistance + (baseResistance * toleranceValue);
-        resistanceMin = baseResistance - (baseResistance * toleranceValue);
-        mainResistance = baseResistance;
-        console.log(mainResistance);
-        console.log(resistanceMin + '< ' + mainResistance + ' < ' + resistanceMax);
     }
 
     else {
-        baseResistance = parseInt(stripe1.toString() + stripe2.toString() + stripe3.toString()) * Math.pow(10, stripe4);
+        baseResistance = parseInt(Stripe1Value.toString() + Stripe2Value.toString() + Stripe3Value.toString()) * Math.pow(10, Stripe4Value);
         toleranceValue = stripe5Tolerance;
-        resistanceMax = baseResistance + (baseResistance * toleranceValue);
-        resistanceMin = baseResistance - (baseResistance * toleranceValue);
-        mainResistance = baseResistance;
-        console.log(mainResistance);
-        console.log(resistanceMin + '< ' + mainResistance + ' < ' + resistanceMax);
     }
 
-    document.getElementById('resultText').innerHTML = mainResistance + ' Ω ± ' + (toleranceValue * 100) + '%';
+    toleranceLevel = toleranceValue;
 
-    let previousStripe1Value = stripe1;
-    let previousStripe2Value = stripe2;
-    let previousStripe3Value = stripe3;
-    let previousStripe4Value = stripe4;
-    let previousStripe5Value = stripe5;
-    let previousTolerance = toleranceValue;
+    resistanceMax = baseResistance + (baseResistance * toleranceValue);
+    resistanceMin = baseResistance - (baseResistance * toleranceValue);
+    mainResistance = baseResistance;
+    // console.log(resistanceMax);
+    // console.log(resistanceMin);
+    // console.log(toleranceValue);
+    // console.log(mainResistance);
+    // console.log(resistanceMin + '< ' + mainResistance + ' < ' + resistanceMax);
+
+    document.getElementById('resultText').innerHTML = mainResistance + ' Ω ± ' + (toleranceValue * 100) + '%';
+    document.getElementById('resultText2').innerHTML = resistanceMin + ' Ω ' + '< ' + mainResistance + ' Ω ' + ' < ' + resistanceMax + ' Ω ';
+    // console.log(toleranceValue);
+
+
 };
 
 document.getElementById('calculateButton').addEventListener('click', function() {
