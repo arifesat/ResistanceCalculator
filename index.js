@@ -82,7 +82,7 @@ function calculateResistance () {
     }
 
     else {
-        baseResistance = parseInt(stripe1.toString() + stripe2.toString() + stripe3.toString()) * Math.pow(10, stripte4);
+        baseResistance = parseInt(stripe1.toString() + stripe2.toString() + stripe3.toString()) * Math.pow(10, stripe4);
         toleranceValue = stripe5Tolerance;
     }
 
